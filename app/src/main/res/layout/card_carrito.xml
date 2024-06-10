@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvProducto"
+    android:layout_width="match_parent"
+    android:layout_height="106dp"
+    android:layout_marginTop="8dp"
+    android:elevation="16dp"
+    cardview:cardCornerRadius="8dp"
+    cardview:cardElevation="32dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_detalle"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivCardCarrito"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTituloCardCarrito"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="Lorem ipsum dolor sit viverra.." />
+
+            <TextView
+                android:id="@+id/tvPrecioCardCarrito"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                tools:text="Lorem ipsum dolor sit viverra.." />
+
+            <TextView
+                android:id="@+id/tvContadorCarrito"
+                android:layout_width="28dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="13sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvPrecioTotalCardCarrito"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                tools:text="Lorem ipsum dolor sit viverra.." />
+
+            <ImageView
+                android:id="@+id/btnDeleteCarrito"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="-40dp"
+                android:background="@drawable/bg_button_delete"
+                android:drawableEnd="@drawable/cart"
+                android:layout_marginBottom="4dp"
+                android:padding="12dp"
+                android:src="@drawable/trash" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</com.google.android.material.card.MaterialCardView>

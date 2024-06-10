@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="azul">#0c7fc4</color>
+    <color name="azul_marino">#181a4b</color>
+    <color name="verde">#0ca69d</color>
+    <color name="subtitle_text">#D4D5DA</color>
+    <color name="background_linearlayout_cardview">#53222222</color>
+</resources>
