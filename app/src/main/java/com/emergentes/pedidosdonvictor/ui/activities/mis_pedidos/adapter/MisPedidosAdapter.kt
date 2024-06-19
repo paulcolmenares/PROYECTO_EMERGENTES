@@ -34,11 +34,13 @@ class MisPedidosAdapter(var carritoList: List<Carrito>) :
         var titulo = itemView.findViewById<TextView>(R.id.tvTituloCardCarritoPedido)
         var contador = itemView.findViewById<TextView>(R.id.tvContadorCarritoPedido)
         var totalPrecio = itemView.findViewById<TextView>(R.id.tvPrecioTotalCardCarritoPedido)
+        var direccion = itemView.findViewById<TextView>(R.id.tvDireccionCardCarritoPedido)
 
         fun render(carritoModel: Carrito) {
             titulo.text = carritoModel.nombre
             contador.text = "C: ${carritoModel.cantidad}"
             totalPrecio.text = "${carritoModel.total} Bs."
+            direccion.text = carritoModel.direccion
             Glide.with(imageUrl.context).load(carritoModel.imagen).into(imageUrl)
         }
 

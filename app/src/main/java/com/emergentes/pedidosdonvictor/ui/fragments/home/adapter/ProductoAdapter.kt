@@ -42,7 +42,7 @@ class ProductoAdapter(private val productosList: ArrayList<Producto>) :
             id.text = productosModel.id
             titulo.text = productosModel.nombre
             estado.text = productosModel.estado
-            precio.text = productosModel.precio
+            precio.text = "${productosModel.precio} Bs."
             descripcion.text = productosModel.descripcion
             Glide.with(imageUrl.context).load(productosModel.imagen).into(imageUrl)
 

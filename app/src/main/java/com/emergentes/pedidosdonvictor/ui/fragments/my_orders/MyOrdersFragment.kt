@@ -42,9 +42,23 @@ class MyOrdersFragment : Fragment(), OnCarritoItemRemovedListener {
         // Setup
         recyclerView = binding.rvCarrito
         recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = CarritoAdapter(carritoList, this)
-        recyclerView.adapter = adapter
-        adapter.notifyDataSetChanged()
+
+        if(carritoList.isEmpty()){
+            recyclerView.visibility = View.INVISIBLE
+            binding.container.visibility= View.INVISIBLE
+            binding.llVacio.visibility = View.VISIBLE
+
+            recyclerView.adapter = null
+        } else{
+            recyclerView.visibility = View.VISIBLE
+            binding.container.visibility= View.VISIBLE
+            binding.llVacio.visibility = View.INVISIBLE
+
+            adapter = CarritoAdapter(carritoList, this)
+            recyclerView.adapter = adapter
+            adapter.notifyDataSetChanged()
+        }
+
 
         // Mostrar resultados
         updatePrecio()
@@ -65,10 +79,11 @@ class MyOrdersFragment : Fragment(), OnCarritoItemRemovedListener {
 
     private fun pagar() {
         binding.btnPagarCarrito.setOnClickListener {
-            if (sharedPreferencesHelper.getTotalSum().toInt() == 0) {
+            val direccion = binding.etDireccion.text.toString()
+            if (direccion.isEmpty()) {
                 Toast.makeText(
                     requireContext(),
-                    "No tiene nada agregado en el carrito",
+                    "Debe ingresar una dirección",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
@@ -77,6 +92,7 @@ class MyOrdersFragment : Fragment(), OnCarritoItemRemovedListener {
                 val carritoList = sharedPreferencesHelper.getCarritoList()
 
                 for (c in carritoList){
+                    c.direccion = direccion
                     db.collection("usuarios").document(user?.email!!).collection("pedidos")
                     .add(c)
                     .addOnSuccessListener { documentReference ->
@@ -92,6 +108,7 @@ class MyOrdersFragment : Fragment(), OnCarritoItemRemovedListener {
                     "Pago realizado existosamente...",
                     Toast.LENGTH_SHORT
                 ).show()
+                binding.etDireccion.text?.clear()
                 sharedPreferencesHelper.clearCart()
                 val carritoList1 = sharedPreferencesHelper.getCarritoList()
                 adapter = CarritoAdapter(carritoList1, this)
@@ -100,6 +117,9 @@ class MyOrdersFragment : Fragment(), OnCarritoItemRemovedListener {
                 binding.tvSubTotalCarrito.text = "${sharedPreferencesHelper.getTotalSum()} Bs."
                 binding.tvTotalCarrito.text = "${(sharedPreferencesHelper.getTotalSum() + 5)} Bs."
 
+                // mostrar las vistas
+                binding.container.visibility = View.INVISIBLE
+                binding.llVacio.visibility = View.VISIBLE
             }
         }
     }

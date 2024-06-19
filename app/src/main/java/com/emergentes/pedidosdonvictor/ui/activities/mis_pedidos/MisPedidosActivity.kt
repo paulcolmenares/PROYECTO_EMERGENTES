@@ -42,8 +42,9 @@ class MisPedidosActivity : AppCompatActivity() {
                             val imagen = dc.document.data["imagen"]?.toString()
                             val precioStr = dc.document.data["precio"]?.toString()
                             val totalStr = dc.document.data["total"]?.toString()
+                            val direccion = dc.document.data["direccion"]?.toString()
 
-                            if (nombre != null && cantidadStr != null && imagen != null && precioStr != null && totalStr != null) {
+                            if (nombre != null && cantidadStr != null && imagen != null && precioStr != null && totalStr != null && direccion != null) {
                                 try {
                                     val cantidad = cantidadStr.toInt()
                                     val precio = precioStr.toDouble()
@@ -54,7 +55,8 @@ class MisPedidosActivity : AppCompatActivity() {
                                         imagen,
                                         precio,
                                         cantidad,
-                                        total
+                                        total,
+                                        direccion
                                     )
                                     listaCarrito.add(c)
                                 } catch (e: NumberFormatException) {

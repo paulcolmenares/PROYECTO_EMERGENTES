@@ -5,5 +5,6 @@ data class Carrito(
     val imagen: String,
     val precio: Double,
     val cantidad: Int,
-    val total: Double
+    val total: Double,
+    var direccion: String? = null
 )

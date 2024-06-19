@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import com.emergentes.pedidosdonvictor.ui.fragments.my_orders.models.Carrito
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlin.math.roundToInt
 
 class SharedPreferencesHelper(context: Context) {
 
@@ -48,7 +49,7 @@ class SharedPreferencesHelper(context: Context) {
     }
 
     fun getTotalSum(): Double {
-        return getCarritoList().sumOf { it.total }
+        return getCarritoList().sumOf { it.total }.roundToInt().toDouble()
     }
 
 }
